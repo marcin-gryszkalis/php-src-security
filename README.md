@@ -8,7 +8,10 @@ export CXXFLAGS="-O2 -pipe -fPIC -Wno-error=incompatible-pointer-types -std=c++1
 
 ## configure
 ```
- ./configure --enable-opcache -with-bz2=shared --with-curl=shared --with-gettext=shared --with-iconv=shared --with-imap=shared --with-ldap=shared --with-mysqli=shared --with-openssl=shared --with-pdo_mysql=shared --disable-phar --with-pspell=shared --with-sodium=shared --with-sqlite3=shared --with-xsl=shared --with-zip=shared --with-zlib=shared --with-imap-ssl --enable-bcmath=shared --enable-calendar=shared --enable-ctype=shared --enable-dom=shared --enable-exif=shared --enable-fileinfo=shared --enable-filter=shared --enable-gd=shared --enable-intl=shared --enable-json=shared --enable-mbstring=shared --enable-opcache=shared --enable-pdo=shared --enable-phar=shared --enable-posix=shared --enable-session=shared --enable-simplexml=shared --enable-soap=shared --enable-tokenizer=shared --enable-xml=shared --enable-xmlreader=shared --enable-xmlwriter=shared --without-pdo_sqlite --with-jpeg --with-freetype --with-webp
+./buildconf --force
+./configure --enable-opcache -with-bz2=shared --with-curl=shared --with-gettext=shared --with-iconv=shared --with-imap=shared --with-ldap=shared --with-mysqli=shared --with-openssl=shared --with-pdo_mysql=shared --disable-phar --with-pspell=shared --with-sodium=shared --with-sqlite3=shared --with-xsl=shared --with-zip=shared --with-zlib=shared --with-imap-ssl --enable-bcmath=shared --enable-calendar=shared --enable-ctype=shared --enable-dom=shared --enable-exif=shared --enable-fileinfo=shared --enable-filter=shared --enable-gd=shared --enable-intl=shared --enable-json=shared --enable-mbstring=shared --enable-opcache=shared --enable-pdo=shared --enable-phar=shared --enable-posix=shared --enable-session=shared --enable-simplexml=shared --enable-soap=shared --enable-tokenizer=shared --enable-xml=shared --enable-xmlreader=shared --enable-xmlwriter=shared --without-pdo_sqlite --with-jpeg --with-freetype --with-webp
+touch ext/php_config.h
+make -j $(($(nproc) / 2))
 ```
 
 ## install
