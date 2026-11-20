@@ -1,3 +1,26 @@
+# Manual build on FreeBSD 14
+
+## flags
+```
+export CFLAGS="-O2 -pipe -fPIC -Wno-error=incompatible-pointer-types -DATTRIBUTE_UNUSED="
+export CXXFLAGS="-O2 -pipe -fPIC -Wno-error=incompatible-pointer-types -std=c++17 -DATTRIBUTE_UNUSED="
+```
+
+## configure
+```
+ ./configure --enable-opcache -with-bz2=shared --with-curl=shared --with-gettext=shared --with-iconv=shared --with-imap=shared --with-ldap=shared --with-mysqli=shared --with-openssl=shared --with-pdo_mysql=shared --disable-phar --with-pspell=shared --with-sodium=shared --with-sqlite3=shared --with-xsl=shared --with-zip=shared --with-zlib=shared --with-imap-ssl --enable-bcmath=shared --enable-calendar=shared --enable-ctype=shared --enable-dom=shared --enable-exif=shared --enable-fileinfo=shared --enable-filter=shared --enable-gd=shared --enable-intl=shared --enable-json=shared --enable-mbstring=shared --enable-opcache=shared --enable-pdo=shared --enable-phar=shared --enable-posix=shared --enable-session=shared --enable-simplexml=shared --enable-soap=shared --enable-tokenizer=shared --enable-xml=shared --enable-xmlreader=shared --enable-xmlwriter=shared --without-pdo_sqlite --with-jpeg --with-freetype --with-webp
+```
+
+## install
+```
+rm /php74/usr/local/bin/php-cgi; cat sapi/cgi/php-cgi > /php74/usr/local/bin/php-cgi &&
+rm /php74/usr/local/bin/php; cat sapi/cli/php > /php74/usr/local/bin/php &&
+chmod +x /php74/usr/local/bin/php* &&
+cp modules/*.so /php74/usr/local/lib/php/20190902/
+```
+
+---
+
 # Sources
 
 This is a fork of the official PHP repository which receives backport of security fixes from maintained branches.
